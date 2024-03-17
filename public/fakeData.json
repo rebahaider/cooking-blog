@@ -1,0 +1,106 @@
+[
+    {
+      "recipe_id": 1,
+      "recipe_name": "Basil Chicken Stir-Fry",
+      "short_description": "A delicious and healthy stir-fry dish with tender chicken and fresh basil.",
+      "ingredients": [
+        "550 g chicken",
+        "120 ml soy sauce",
+        "200 g basil leaves",
+        "400 g mushrooms"
+      ],
+      "preparing_time": "30 min",
+      "calories": "320 calories",
+      "recipe_image": "https://i.ibb.co/VSC4q1K/spaghetti-with-mixed-ingredients-white-plate.jpg"
+    },
+    {
+      "recipe_id": 2,
+      "recipe_name": "Vegetable Curry",
+      "short_description": "A flavorful vegetarian curry loaded with assorted vegetables.",
+      "ingredients": [
+        "300 g carrots",
+        "200 g potatoes",
+        "150 g green beans",
+        "1 onion",
+        "400 ml coconut milk",
+        "2 tbsp curry paste"
+      ],
+      "preparing_time": "45 min",
+      "calories": "250 calories",
+      "recipe_image": "https://i.ibb.co/Gnn0v18/top-view-tasty-meat-soup-with-potatoes-seasonings-dark-desk.jpg"
+    },
+    {
+        "recipe_id": 3,
+        "recipe_name": "Mushroom Risotto",
+        "short_description": "A creamy and comforting Italian rice dish infused with mushrooms and Parmesan cheese.",
+        "ingredients": [
+          "300 g Arborio rice",
+          "200 g mushrooms",
+          "1 onion",
+          "2 cloves garlic",
+          "1 liter vegetable broth",
+          "100 ml dry white wine",
+          "50 g grated Parmesan cheese",
+          "2 tbsp olive oil",
+          "Salt and black pepper to taste"
+        ],
+        "preparing_time": "40 min",
+        "calories": "380 calories",
+        "recipe_image": "https://i.ibb.co/723sNrn/vegetarian-risotto-with-fresh-mushrooms-parmesan-cheese-generated-by-ai.jpg"
+      },
+      {
+        "recipe_id": 4,
+        "recipe_name": "Caprese Salad",
+        "short_description": "A simple and refreshing salad with ripe tomatoes, fresh mozzarella, and basil leaves.",
+        "ingredients": [
+          "3 large tomatoes",
+          "200 g fresh mozzarella cheese",
+          "1 bunch fresh basil leaves",
+          "2 tbsp extra virgin olive oil",
+          "2 tbsp balsamic vinegar",
+          "Salt and black pepper to taste"
+        ],
+        "preparing_time": "15 min",
+        "calories": "200 calories",
+        "recipe_image": "https://i.ibb.co/kxgBfz6/apetizer-salad-with-mozarella-tomato-rolls.jpg"
+      },
+      {
+        "recipe_id": 5,
+        "recipe_name": "Chicken Avocado Salad",
+        "short_description": "A light and healthy salad featuring tender chicken, creamy avocado, and fresh vegetables.",
+        "ingredients": [
+          "2 chicken breasts",
+          "2 avocados",
+          "1 head romaine lettuce",
+          "1 cucumber",
+          "1 bell pepper",
+          "1/4 cup cherry tomatoes",
+          "2 tbsp olive oil",
+          "2 tbsp lime juice",
+          "Salt and black pepper to taste"
+        ],
+        "preparing_time": "25 min",
+        "calories": "290 calories",
+        "recipe_image": "https://i.ibb.co/SNYTQk2/top-view-caesar-salad-oval-plate-green-white-checkered-tablecloth-fork-knife-dark-red-background.jpg"
+      },
+      {
+        "recipe_id": 6,
+        "recipe_name": "Vegetable Stir-Fry",
+        "short_description": "A colorful and flavorful stir-fry loaded with assorted vegetables and tofu.",
+        "ingredients": [
+          "200 g firm tofu",
+          "1 bell pepper",
+          "1 carrot",
+          "100 g snow peas",
+          "1 broccoli head",
+          "2 cloves garlic",
+          "2 tbsp soy sauce",
+          "1 tbsp sesame oil",
+          "1 tbsp cornstarch",
+          "Salt and black pepper to taste"
+        ],
+        "preparing_time": "30 min",
+        "calories": "220 calories",
+        "recipe_image": "https://i.ibb.co/d569ZYZ/fried-vegetables-with-sauce-pan.jpg"
+      }
+  ]
