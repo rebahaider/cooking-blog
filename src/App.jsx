@@ -3,8 +3,9 @@ import './App.css'
 import { useState } from 'react'
 import SingleRecipe from './SingleRecipe';
 import profile from '../src/assets/images/Profile-icon.png';
+import background from '../src/assets/images/background.png'
 import { CiSearch } from "react-icons/ci";
-import background from '../src/assets/images/Rectangle 1.png'
+
 
 function App() {
 
@@ -64,8 +65,13 @@ function App() {
         </header>
         <body>
           {/* Banner Section  */}
-          <div style={{backgroundImage : `url("../src/assets/images/Rectangle 1.png")`}}>
-
+          <div className='h-[600px] rounded-xl space-y-6' style={{backgroundImage: `url(${background})`}}>
+            <h1 className='text-white text-6xl font-bold text-center pt-32'>Discover an exceptional cooking class tailored for you!</h1>
+            <p className='text-white text-center px-32 text-xl'>Cooking, also known as cookery or professionally as the culinary arts, is the art, science and craft of using heat to make food more palatable, digestible,</p>
+            <div className='text-center space-x-10'>
+              <button className='bg-[#0BE58A] p-5 rounded-full font-bold'>Explore Now</button>
+              <button className='text-white outline outline-offset-2 outline-2 p-4 rounded-full font-bold'>Our FeedBack</button>
+            </div>
           </div>
           {/* our recipe section */}
           <div className='flex justify-between gap-8'>
