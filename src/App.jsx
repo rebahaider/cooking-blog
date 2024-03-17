@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import './App.css'
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react'
 import SingleRecipe from './SingleRecipe';
 import profile from '../src/assets/images/Profile-icon.png';
@@ -11,6 +13,7 @@ function App() {
 
   const [recipes, setRecipes] = useState([]);
   const [cook, setCook] = useState([]);
+  const [currentCookingItem, setCurrentCookingItem] = useState([]);
 
   useEffect(() => {
     fetch("./fakeData.json")
@@ -20,21 +23,34 @@ function App() {
       })
   }, []);
 
+  // const showToastMessage = () => {
+  //   toast("Already Added");
+  // }
+
   const handleAddRecipe = (r) => {
     const isExist = cook.find((item) => item.recipe_id == r.recipe_id)
     if (!isExist) {
       setCook([...cook, r]);
     }
     else {
-      alert('Already added');
+      alert('Already Added');
     }
   };
 
   const handlePreparing = (id) => {
     const newCook = cook.filter((item) => item.recipe_id != id);
     setCook(newCook);
-    console.log(newCook);
+    //console.log(newCook);
   }
+
+  const handlePreparingButton = (c) => {
+    const newItem = currentCookingItem.find((item) => item.recipe_id == c.recipe_id);
+    console.log(newItem);
+    if (newItem) {
+      setCurrentCookingItem([...currentCookingItem, c]);
+    }
+   
+  };
 
 
   //console.log(cook);
@@ -42,6 +58,7 @@ function App() {
   return (
     <>
       <div className='max-w-7xl mx-auto space-y-20 lexend'>
+        {/* header section */}
         <header className='container flex justify-evenly font-bold'>
           <div>
             <h1 className='text-4xl'>Reba's Recipe</h1>
@@ -55,52 +72,84 @@ function App() {
             </ul>
           </div>
           <div className="form-control relative ">
-          <button className='absolute inset-y-0 mt-2 w-16 ml-8'><CiSearch /></button>
+            <button className='absolute inset-y-0 mt-2 w-16 ml-8'><CiSearch /></button>
             <input type="text" placeholder="Search" className="bg-gray-100 rounded-xl mt-2 p-2 w-24 md:w-auto text-center" />
-            
+
           </div>
           <div>
-          <img src={profile} alt="" />
+            <img className='mt-2' src={profile} alt="" />
           </div>
         </header>
-        <body>
+        <body className='space-y-20 lexend'>
           {/* Banner Section  */}
-          <div className='h-[600px] rounded-xl space-y-6' style={{backgroundImage: `url(${background})`}}>
+          <div className='h-[600px] rounded-xl space-y-6' style={{ backgroundImage: `url(${background})` }}>
             <h1 className='text-white text-6xl font-bold text-center pt-32'>Discover an exceptional cooking class tailored for you!</h1>
-            <p className='text-white text-center px-32 text-xl'>Cooking, also known as cookery or professionally as the culinary arts, is the art, science and craft of using heat to make food more palatable, digestible,</p>
+            <p className='text-white text-center px-32 text-xl'>Cooking, also known as cookery or professionally as the culinary arts, is the art, science and craft of using heat to make food more palatable, digestible.</p>
             <div className='text-center space-x-10'>
               <button className='bg-[#0BE58A] p-5 rounded-full font-bold'>Explore Now</button>
               <button className='text-white outline outline-offset-2 outline-2 p-4 rounded-full font-bold'>Our FeedBack</button>
             </div>
           </div>
           {/* our recipe section */}
+          <div className='space-y-4'>
+            <h1 className='text-5xl font-bold text-center'>Our Recipes</h1>
+            <p className='text-center px-32 text-xl'>Cooking, also known as cookery or professionally as the culinary arts, is the art, science and craft of using heat to make food more palatable, digestible.</p>
+          </div>
           <div className='flex justify-between gap-8'>
             <div className='grid grid-cols-2'>
               {
-                recipes.map((recipe) => (<SingleRecipe key={recipe.recipe_id} handleAddRecipe={handleAddRecipe} recipe={recipe}></SingleRecipe>))
+                recipes.map((recipe) => (<SingleRecipe handleAddRecipe={handleAddRecipe} recipe={recipe}></SingleRecipe>))
               }
             </div>
             <div className='bg-gray-100 shadow-lg rounded-xl m-6 p-10 space-y-2'>
-              <h1 className='font-bold text-center'>Want To Cook : {cook.length}</h1><hr />
-              <div className='flex gap-12'>
-                <h3>Name</h3>
-                <h3>Time</h3>
-                <h3>Calories</h3>
-              </div>
               <div>
-                {
-                  cook.map((item, index) => (
-                    <div className='flex gap-12 space-y-3 bg-white p-4 m-4 rounded-xl'>
-                      <p>{index + 1}</p>
-                      <h3>{item.recipe_name}</h3>
-                      <h3>{item.preparing_time}</h3>
-                      <h3>{item.calories}</h3>
-                      <button onClick={() => handlePreparing(item.recipe_id)} className='bg-[#0BE58A] px-3 rounded-full font-bold'>Preparing</button>
-                    </div>
-                  ))
-                }
+                <h1 className='font-bold text-center'>Want To Cook : {cook.length}</h1>
+                <hr />
+                <div className='flex gap-12'>
+                  <h3>Name</h3>
+                  <h3>Time</h3>
+                  <h3>Calories</h3>
+                </div>
+                <div>
+                  {
+                    cook.map((item, index) => (
+                      <div className='flex gap-12 space-y-3 bg-white p-4 m-4 rounded-xl'>
+                        <p>{index + 1}</p>
+                        <h3>{item.recipe_name}</h3>
+                        <h3>{item.preparing_time}</h3>
+                        <h3>{item.calories}</h3>
+                        <button onClick={() => {handlePreparing(item.recipe_id);handlePreparingButton(item.recipe_id)}} className='bg-[#0BE58A] px-3 rounded-full font-bold'>Preparing</button>
+                      </div>
+                    ))
+                  }
+                </div>
+                {/* currently cooking section */}
+                <div>
+                  <h1 className='font-bold text-center'>Currently cooking: {currentCookingItem.length}</h1>
+                  <hr />
+                  <div className='flex gap-12'>
+                    <h3>Name</h3>
+                    <h3>Time</h3>
+                    <h3>Calories</h3>
+                  </div>
+                  <div>
+                    {
+                      currentCookingItem.map((item, index) => (
+                        <div className='flex gap-12 space-y-3 bg-white p-4 m-4 rounded-xl'>
+                          <p>{index + 1}</p>
+                          <h3>{item.recipe_name}</h3>
+                          <h3>{item.preparing_time}</h3>
+                          <h3>{item.calories}</h3>
+                          <button onClick={() => handlePreparingButton(item.recipe_id)} className='bg-[#0BE58A] px-3 rounded-full font-bold'>Preparing</button>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
               </div>
             </div>
+
+
           </div>
         </body>
       </div>
