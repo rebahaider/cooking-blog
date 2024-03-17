@@ -44,8 +44,8 @@ function App() {
   }
 
   const handlePreparingButton = (c) => {
-    const newItem = currentCookingItem.find((item) => item.recipe_id == c.recipe_id);
-    console.log(newItem);
+    const newItem = currentCookingItem.filter((item) => item.recipe_id == c.recipe_id);
+    //console.log(newItem);
     if (newItem) {
       setCurrentCookingItem([...currentCookingItem, c]);
     }
@@ -98,7 +98,7 @@ function App() {
           <div className='flex justify-between gap-8'>
             <div className='grid grid-cols-2'>
               {
-                recipes.map((recipe) => (<SingleRecipe handleAddRecipe={handleAddRecipe} recipe={recipe}></SingleRecipe>))
+                recipes.map((recipe) => (<SingleRecipe key={recipe.recipe_id} handleAddRecipe={handleAddRecipe} recipe={recipe}></SingleRecipe>))
               }
             </div>
             <div className='bg-gray-100 shadow-lg rounded-xl m-6 p-10 space-y-2'>
@@ -118,7 +118,7 @@ function App() {
                         <h3>{item.recipe_name}</h3>
                         <h3>{item.preparing_time}</h3>
                         <h3>{item.calories}</h3>
-                        <button onClick={() => {handlePreparing(item.recipe_id);handlePreparingButton(item.recipe_id)}} className='bg-[#0BE58A] px-3 rounded-full font-bold'>Preparing</button>
+                        <button onClick={() => {handlePreparing(item.recipe_id);handlePreparingButton(item)}} className='bg-[#0BE58A] px-3 rounded-full font-bold'>Preparing</button>
                       </div>
                     ))
                   }
@@ -140,7 +140,6 @@ function App() {
                           <h3>{item.recipe_name}</h3>
                           <h3>{item.preparing_time}</h3>
                           <h3>{item.calories}</h3>
-                          <button onClick={() => handlePreparingButton(item.recipe_id)} className='bg-[#0BE58A] px-3 rounded-full font-bold'>Preparing</button>
                         </div>
                       ))
                     }
