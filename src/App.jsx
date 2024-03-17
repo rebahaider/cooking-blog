@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 import './App.css'
 import { useState } from 'react'
 import SingleRecipe from './SingleRecipe';
-import profile from '../src/assets/images/Profile-icon.png'
+import profile from '../src/assets/images/Profile-icon.png';
+import { CiSearch } from "react-icons/ci";
+import background from '../src/assets/images/Rectangle 1.png'
 
 function App() {
 
@@ -51,8 +53,10 @@ function App() {
               <li><a href="">Search</a></li>
             </ul>
           </div>
-          <div className="form-control">
-            <input type="text" placeholder="Search" className="bg-gray-100 rounded-xl mt-2 p-2 w-24 md:w-auto" />
+          <div className="form-control relative ">
+          <button className='absolute inset-y-0 mt-2 w-16 ml-8'><CiSearch /></button>
+            <input type="text" placeholder="Search" className="bg-gray-100 rounded-xl mt-2 p-2 w-24 md:w-auto text-center" />
+            
           </div>
           <div>
           <img src={profile} alt="" />
@@ -60,18 +64,18 @@ function App() {
         </header>
         <body>
           {/* Banner Section  */}
-          <div>
+          <div style={{backgroundImage : `url("../src/assets/images/Rectangle 1.png")`}}>
 
           </div>
           {/* our recipe section */}
           <div className='flex justify-between gap-8'>
             <div className='grid grid-cols-2'>
               {
-                recipes.map((recipe) => (<SingleRecipe handleAddRecipe={handleAddRecipe} recipe={recipe}></SingleRecipe>))
+                recipes.map((recipe) => (<SingleRecipe key={recipe.recipe_id} handleAddRecipe={handleAddRecipe} recipe={recipe}></SingleRecipe>))
               }
             </div>
             <div className='bg-gray-100 shadow-lg rounded-xl m-6 p-10 space-y-2'>
-              <h1 className='font-bold text-center'>Want To Cook : <span>0</span></h1><hr />
+              <h1 className='font-bold text-center'>Want To Cook : {cook.length}</h1><hr />
               <div className='flex gap-12'>
                 <h3>Name</h3>
                 <h3>Time</h3>
